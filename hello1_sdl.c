@@ -14,7 +14,7 @@ int main(void)
         return 1;
     }
 
-    printf("initialization successful!\n");
+    printf("Dit was een game!\n");
 
     // clean up resources before exiting
     SDL_Quit();

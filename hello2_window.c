@@ -11,17 +11,17 @@ int main(void)
     // attempt to initialize graphics and timer system
     if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER) != 0)
     {
-        printf("error initializing SDL: %s\n", SDL_GetError());
+        printf("Error initializing SDL: %s\n", SDL_GetError());
         return 1;
     }
 
-    SDL_Window* win = SDL_CreateWindow("Hello, CS50!",
+    SDL_Window* win = SDL_CreateWindow("Hallo, Nathan!",
                                        SDL_WINDOWPOS_CENTERED,
                                        SDL_WINDOWPOS_CENTERED,
                                        640, 480, 0);
     if (!win)
     {
-        printf("error creating window: %s\n", SDL_GetError());
+        printf("Error creating window: %s\n", SDL_GetError());
         SDL_Quit();
 	    return 1;
     }
@@ -32,4 +32,5 @@ int main(void)
     // clean up resources before exiting
     SDL_DestroyWindow(win);
     SDL_Quit();
+    printf("Exiting game....\n");
 }

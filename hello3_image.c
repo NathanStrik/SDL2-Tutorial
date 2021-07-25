@@ -1,5 +1,5 @@
 /**
- * hello3_image.c - Initializes SDL, loads an image, And displys it in a window
+ * hello3_image.c - Initializes SDL, loads an image, And displays it in a window
  */
 
 #include <stdio.h>
@@ -12,17 +12,17 @@ int main(void)
     // attempt to initialize graphics and timer system
     if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER) != 0)
     {
-        printf("error initializing SDL: %s\n", SDL_GetError());
+        printf("Fout bij SDL-initialisatie: %s\n", SDL_GetError());
         return 1;
     }
 
-    SDL_Window* win = SDL_CreateWindow("Hello, CS50!",
+    SDL_Window* win = SDL_CreateWindow("Hallo, Nathan!",
                                        SDL_WINDOWPOS_CENTERED,
                                        SDL_WINDOWPOS_CENTERED,
                                        640, 480, 0);
     if (!win)
     {
-        printf("error creating window: %s\n", SDL_GetError());
+        printf("Fout bij maken van venster: %s\n", SDL_GetError());
         SDL_Quit();
 	    return 1;
     }
@@ -32,36 +32,36 @@ int main(void)
     SDL_Renderer* rend = SDL_CreateRenderer(win, -1, render_flags);
     if (!rend)
     {
-      printf("error creating renderer: %s\n", SDL_GetError());
+      printf("Fout bij maken van renderer: %s\n", SDL_GetError());
       SDL_DestroyWindow(win);
       SDL_Quit();
       return 1;
     }
 
-    // load the image into memory using SDL_image library function
-    SDL_Surface* surface = IMG_Load("resources/hello.png");
+    // load the image into system memory (RAM) using SDL_image library function
+    SDL_Surface* surface = IMG_Load("resources/hallo-nathan.png");
     if (!surface)
     {
-        printf("error creating surface\n");
+        printf("Fout bij maken van oppervlak\n");
         SDL_DestroyRenderer(rend);
         SDL_DestroyWindow(win);
         SDL_Quit();
         return 1;
     }
 
-    // load the image data into the graphics hardware's memory
+    // load the image data into the graphics hardware's memory (VRAM)
     SDL_Texture* tex = SDL_CreateTextureFromSurface(rend, surface);
     SDL_FreeSurface(surface);
     if (!tex)
     {
-        printf("error creating texture: %s\n", SDL_GetError());
+        printf("Fout bij maken van textuur: %s\n", SDL_GetError());
         SDL_DestroyRenderer(rend);
         SDL_DestroyWindow(win);
         SDL_Quit();
         return 1;
     }
 
-    // clear the window
+    // clear the window (makes window go black)
     SDL_RenderClear(rend);
     
     // draw the image to the window
